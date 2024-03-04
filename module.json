@@ -9,7 +9,7 @@
   "ModuleName": "Pimax Crystal Advanced",
   "ModuleDescription": "VRCFaceTracking module supporting Pimax Crystal(Tobii) advanced mode.",
   "UsageInstructions": "Just install and play. \nIf you need the \"advanced\" mode, then you need a valid license file. \nFor more details, see the README by clicking on the link in the \"Module Page\"",
-  "DownloadUrl": "https://github.com/ghostiam/PimaxCrystalAdvanced/releases",
-  "ModulePageUrl": "https://github.com/ghostiam/PimaxCrystalAdvanced",
+  "DownloadUrl": "https://github.com/Tr1turbo/PimaxCrystalModule/releases",
+  "ModulePageUrl": "https://github.com/Tr1turbo/PimaxCrystalModule",
   "DllFileName": "PimaxCrystalAdvanced.dll"
 }
