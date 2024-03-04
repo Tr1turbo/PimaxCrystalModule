@@ -1,11 +1,11 @@
 {
   "ModuleId": "324b3cd5-5e64-4f3f-b056-12340badc0de",
-  "LastUpdated": "2023-12-23T15:00:00Z",
+  "LastUpdated": "2024-03-04T17:00:00Z",
   "Version": "1.0.0",
   "Downloads": 0,
   "Ratings": 0,
   "Rating": 0.0,
-  "AuthorName": "GhostIAm",
+  "AuthorName": "GhostIAm; Forked by Triturbo",
   "ModuleName": "Pimax Crystal Advanced",
   "ModuleDescription": "VRCFaceTracking module supporting Pimax Crystal(Tobii) advanced mode.",
   "UsageInstructions": "Just install and play. \nIf you need the \"advanced\" mode, then you need a valid license file. \nFor more details, see the README by clicking on the link in the \"Module Page\"",
