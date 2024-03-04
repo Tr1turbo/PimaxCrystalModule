@@ -25,8 +25,16 @@ public class PimaxCrystalAdvanced : ExtTrackingModule
 
             _beClient.OnData += UpdateEyeData;
 
+
+            var stream = typeof(PimaxCrystalAdvanced).Assembly.GetManifestResourceStream("PimaxCrystalAdvanced.Assets.crystal-hmd.png");
+            ModuleInformation.StaticImages = stream is not null ? new List<Stream> { stream } : ModuleInformation.StaticImages;
+            ModuleInformation.Name = "Pimax Crystal";
+
             return (true, false);
         }
+
+
+
 
         Logger.LogInformation("Failed to connect to Broken Eye server...");
 
@@ -37,6 +45,11 @@ public class PimaxCrystalAdvanced : ExtTrackingModule
             Logger.LogInformation("Connected to Tobii API!");
 
             _tobiiClient.OnData += UpdateEyeData;
+
+
+            var stream = typeof(PimaxCrystalAdvanced).Assembly.GetManifestResourceStream("PimaxCrystalAdvanced.Assets.crystal-tobii.png");
+            ModuleInformation.StaticImages = stream is not null ? new List<Stream> { stream } : ModuleInformation.StaticImages;
+            ModuleInformation.Name = "Pimax Crystal";
 
             return (true, false);
         }
@@ -68,9 +81,9 @@ public class PimaxCrystalAdvanced : ExtTrackingModule
         UnifiedTracking.Data.Eye.Right.Gaze =
             data.Right.GazeDirectionIsValid ? ToVrcftVector2(data.Right.GazeDirection) : Vector2.zero;
 
-        UnifiedTracking.Data.Eye.Left.Openness = data.Left.OpennessIsValid ? data.Left.Openness : 1f;
-        UnifiedTracking.Data.Eye.Right.Openness = data.Right.OpennessIsValid ? data.Right.Openness : 1f;
-
+        UnifiedTracking.Data.Eye.Left.Openness = data.Left.OpennessIsValid ? MapValue(data.Left.Openness, 0, 0.8f, 0, 1.33f) : 1f;
+        UnifiedTracking.Data.Eye.Right.Openness = data.Right.OpennessIsValid ? MapValue(data.Right.Openness, 0, 0.8f, 0, 1.33f) : 1f;
+     
         if (data.Left.PupilDiameterIsValid)
             UnifiedTracking.Data.Eye.Left.PupilDiameter_MM = data.Left.PupilDiameterMm;
 
@@ -107,5 +120,16 @@ public class PimaxCrystalAdvanced : ExtTrackingModule
     {
         _beClient?.Dispose();
         _tobiiClient?.Dispose();
+    }
+
+    static float MapValue(float value, float fromMin, float fromMax, float toMin, float toMax)
+    {
+        // Ensure the value is within the specified range
+        value = Math.Min(Math.Max(value, fromMin), fromMax);
+
+        // Map the value from one range to another
+        float mappedValue = (value - fromMin) * (toMax - toMin) / (fromMax - fromMin) + toMin;
+
+        return mappedValue;
     }
 }
